@@ -4,6 +4,7 @@ select
 	             dc.category_2_name as category_2_name,
 	             sum(tld.revenue_fact) as revenue_fact,
 	             sum(tld.ho_clicks_line) as ho_clicks,
+				 sum(tld.ho_conversions_line) as ho_conversions,
 	             sum(tld.ho_issued_line) as ho_issued
 	       from leadgen.t_leadgen_data tld 
 	       left join ho.d_categories dc
