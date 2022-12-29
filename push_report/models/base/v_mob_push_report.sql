@@ -9,7 +9,7 @@ select
 	       max(ho_clicks) as ho_clicks,
 	       max(ho_issued) as ho_issued
 	from {{ ref('mob_push_msg_sent')}} mps
-	full outer join {{ ref('t_leadgen_data_light_push')}} tld
+	full outer join {{ ref('v_leadgen_data_light_push')}} tld
 	       on tld.last_src = mps.source
 	       and tld.date::date = mps.create_ts::date
 	group by
