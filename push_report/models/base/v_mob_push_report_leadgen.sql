@@ -6,5 +6,5 @@ select
 	             sum(tld.ho_clicks) as ho_clicks,
 				 sum(tld.ho_conversions) as ho_conversions,
 	             sum(tld.ho_issued) as ho_issued
-	       from {{ref('pre_t_leadgen_data_push')}} tld
+	       from {{ref('v_mob_push_report_pre_leadgen')}} tld
 	       group by 1,2
