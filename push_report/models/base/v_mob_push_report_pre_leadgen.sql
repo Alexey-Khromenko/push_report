@@ -11,5 +11,5 @@ select
 	             on dc.id = tld.offer_category_id
 	       where 1=1
 	             and tld.last_src_type = 'mobile_push'
-	             and tld.date >= date_trunc('month',current_date)::timestamp - '2 mons'::interval
+	             and tld.date >= date_trunc('month',current_date)::timestamp - '5 month'::interval
 	       group by 1,2,3

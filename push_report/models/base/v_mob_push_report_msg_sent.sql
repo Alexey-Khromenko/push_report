@@ -8,6 +8,7 @@ select
 from sms.t_push_queue pq
 left join sms.d_push_template pt
 	on pt.code::text = pq.template_id::text
-where pq.create_ts >=date'2022-11-10'
-and pq.create_ts >=date_trunc('month',current_date) - '2 month'::interval
+where 1=1 
+and pq.create_ts >=date'2022-11-10' --s etoi dati pojavilis' last_src y mobile_push rassilok
+and pq.create_ts >=date_trunc('month',current_date) - '5 month'::interval
 and pq.status_code = 'SENT'
