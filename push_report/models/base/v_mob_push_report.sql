@@ -3,17 +3,12 @@ select
 	       coalesce(mps.source, tld.last_src) as last_src,
 	       mps.title,
 	       mps.template_text,
-	       sum(mps.msg_sent_cnt) as msg_sent_count,
-	       max(category_2_name) as category_2_name,
-	       max(revenue_fact) as revenue_fact,
-	       max(ho_clicks) as ho_clicks,
-		   max(ho_conversions) as ho_conversions,
-	       max(ho_issued) as ho_issued
+	       mps.msg_sent_cnt,
+	       tld.category_2_name,
+	       tld.revenue_fact,
+	       tld.ho_clicks,
+		   tld.ho_conversions,
+	       tld.ho_issued
 	from {{ ref('v_mob_push_report_msg_sent')}} mps
-	left join {{ ref('v_mob_push_report_leadgen')}} tld
+	full outer join {{ ref('v_mob_push_report_leadgen')}} tld
 	       on tld.last_src = mps.source
-	group by
-	       coalesce(mps.create_ts::date, tld.date),
-	       coalesce(mps.source, tld.last_src),
-	       mps.title,
-	       mps.template_text
